@@ -6,6 +6,7 @@ let sinonChai = require("sinon-chai");
 let expect = chai.expect;
 
 let barcodeToZipcode = require("../lib/barcodeToZipcode.js");
+let zipcodeToBarcode = require("../lib/zipcodeToBarcode.js");
 
 
 describe("测试描述", function(){
@@ -34,6 +35,16 @@ describe("测试描述", function(){
 
     let result = barcodeToZipcode(`||:|::|::|:|:::|:||:::|:|::|::|::||:::|:|:::||||::::|:|:|`);
     let expect_string = `9876543210`;
+        
+    expect(result).to.equal(expect_string);
+
+  });
+
+
+  it("4、将邮编`12345-6789`转换成条码", function(){
+    
+    let result = zipcodeToBarcode(`12345-6789`);
+    let expect_string = `|:::||::|:|::||::|::|:|:|::||::|:::||::|:|:|:::|:|:|`;
         
     expect(result).to.equal(expect_string);
 
